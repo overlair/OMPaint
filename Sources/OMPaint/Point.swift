@@ -47,52 +47,52 @@ extension OMPaint {
 
 }
 extension OMPaint.Point {
-    static prefix func -(_ rhs: PerfectFreehand.Point) -> PerfectFreehand.Point {
-        PerfectFreehand.Point(x: -rhs.x, y: -rhs.y)
+    static prefix func -(_ rhs: OMPaint.Point) -> OMPaint.Point {
+        OMPaint.Point(x: -rhs.x, y: -rhs.y)
     }
     
-    func neg() -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: -self.x, y: -self.y, p: self.p)
+    func neg() -> OMPaint.Point  {
+        OMPaint.Point (x: -self.x, y: -self.y, p: self.p)
     }
     
-    func add(_ this: PerfectFreehand.Point) -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: self.x + this.x, y: self.y + this.y, p: this.p)
+    func add(_ this: OMPaint.Point) -> OMPaint.Point  {
+        OMPaint.Point (x: self.x + this.x, y: self.y + this.y, p: this.p)
     }
     
-    func sub(_ this: PerfectFreehand.Point ) -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: self.x - this.x, y: self.y - this.y, p: this.p)
+    func sub(_ this: OMPaint.Point ) -> OMPaint.Point  {
+        OMPaint.Point (x: self.x - this.x, y: self.y - this.y, p: this.p)
     }
     
-    func mulV(_ this: PerfectFreehand.Point ) -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: self.x * this.x, y: self.y * this.y, p: this.p)
+    func mulV(_ this: OMPaint.Point ) -> OMPaint.Point  {
+        OMPaint.Point (x: self.x * this.x, y: self.y * this.y, p: this.p)
     }
 
-    func mul(_ this: Double) -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: self.x * this, y: self.y * this, p: self.p)
+    func mul(_ this: Double) -> OMPaint.Point  {
+        OMPaint.Point (x: self.x * this, y: self.y * this, p: self.p)
     }
     
-    func divV(_ this: PerfectFreehand.Point ) -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: self.x / this.x, y: self.y / this.y, p: this.p)
+    func divV(_ this: OMPaint.Point ) -> OMPaint.Point  {
+        OMPaint.Point (x: self.x / this.x, y: self.y / this.y, p: this.p)
     }
     
-    func div(_ this: Double) -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: self.x / this, y: self.y / this, p: self.p)
+    func div(_ this: Double) -> OMPaint.Point  {
+        OMPaint.Point (x: self.x / this, y: self.y / this, p: self.p)
     }
     
-    func per() -> PerfectFreehand.Point  {
-        PerfectFreehand.Point (x: self.y, y: -self.x, p: self.p)
+    func per() -> OMPaint.Point  {
+        OMPaint.Point (x: self.y, y: -self.x, p: self.p)
     }
 
-    func uni() -> PerfectFreehand.Point  {
+    func uni() -> OMPaint.Point  {
         self.div(self.len())
 
     }
 
-    func lrp(_ this: PerfectFreehand.Point , t: Double) -> PerfectFreehand.Point  {
+    func lrp(_ this: OMPaint.Point , t: Double) -> OMPaint.Point  {
         self.add(this.sub(self).mul(t))
     }
     
-    func med(_ this: PerfectFreehand.Point ) -> PerfectFreehand.Point  {
+    func med(_ this: OMPaint.Point ) -> OMPaint.Point  {
         self.lrp(this, t: 0.5)
     }
     
@@ -105,34 +105,34 @@ extension OMPaint.Point {
     }
     
     
-    func isEqual(_ this: PerfectFreehand.Point ) -> Bool {
+    func isEqual(_ this: OMPaint.Point ) -> Bool {
         self.x == this.x && self.y == this.y
      }
     
-    func dist2(_ this: PerfectFreehand.Point ) -> Double {
+    func dist2(_ this: OMPaint.Point ) -> Double {
         self.sub(this).len2()
     }
     
-    func dist(_ this: PerfectFreehand.Point ) -> Double {
+    func dist(_ this: OMPaint.Point ) -> Double {
         self.sub(this).len()
     }
     
-    func dpr(_ this: PerfectFreehand.Point ) -> Double {
+    func dpr(_ this: OMPaint.Point ) -> Double {
         self.x * this.x + self.y * this.y
     }
 
-    func prj(_ this: PerfectFreehand.Point , d: Double) -> PerfectFreehand.Point  {
+    func prj(_ this: OMPaint.Point , d: Double) -> OMPaint.Point  {
        self.add(this.mul(d))
     }
     
-    func rotAround(_ this: PerfectFreehand.Point , r: Double) -> PerfectFreehand.Point  {
+    func rotAround(_ this: OMPaint.Point , r: Double) -> OMPaint.Point  {
         let s = sin(r)
         let c = cos(r)
         let px = self.x - this.x
         let py = self.y - this.y
         let nx = px * c - px * s
         let ny = py * s + py * c
-        return PerfectFreehand.Point (x: nx + this.x, y: ny + this.y, p: this.p)
+        return OMPaint.Point (x: nx + this.x, y: ny + this.y, p: this.p)
     }
 }
 

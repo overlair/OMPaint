@@ -8,17 +8,19 @@
 import Foundation
 //import SpriteKit
 import CoreGraphics
+import UIKit
 
-extension Array where Element == PerfectFreehand.Point {}
+extension Array where Element == OMPaint.Point {}
 
 extension Array where Element == CGPoint {
     
-    func getFreehandPath(for stroke: PerfectFreehand.Stroke = .init()) -> CGPath {
-        var points:  [PerfectFreehand.Point] = []
+    func getFreehandPath(for stroke: OMPaint.Stroke = .init()) -> CGPath {
+        var points:  [OMPaint.Point] = []
         for point in self {
-            points.append(PerfectFreehand.Point(x: point.x, y: point.y))
+            points.append(OMPaint.Point(x: point.x, y: point.y))
         }
-        return points.getStrokePath(stroke: stroke)
+//        return points.getStrokePath(stroke: stroke)
+        return points.getBezierPath()
     }
     
     func getLinePath() -> CGPath {
@@ -59,7 +61,7 @@ extension Array where Element == CGPoint {
     }
     
 }
-extension Array where Element == PerfectFreehand.Point {
+extension Array where Element == OMPaint.Point {
     func getFreehandPath() -> CGPath {
         let path = CGMutablePath()
         let points = self.map { CGPoint(x: $0.x, y: $0.y)}
