@@ -72,7 +72,7 @@ public extension [CGPoint] {
             return newPoints
         }
         
-        func getSegments_v2(_ points: [CGPoint], with scalar: CGFloat)  -> [LineSegment] {
+        func getSegments_v2(_ points: [CGPoint], with radius: CGFloat)  -> [LineSegment] {
             var segments: [LineSegment] = []
             
             var previousAngle: Angle? = nil
@@ -98,7 +98,7 @@ public extension [CGPoint] {
                     
                     
                     
-                    var radius: CGFloat = 2 //- (0.1 * brush.size  * adjustedVelocity)
+//                    var radius: CGFloat = 2 //- (0.1 * brush.size  * adjustedVelocity)
                    
 //                    if let previous = previousRadius {
 //                        radius = lerp(previous, radius, 0.2)
