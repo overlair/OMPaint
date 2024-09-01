@@ -21,7 +21,7 @@ public extension [CGPoint] {
     }
     
  
-    public func getPath() -> CGPath {
+    public func getPath(with size: CGFloat = 5) -> CGPath {
         func getSegments(_ points: [CGPoint])  -> [LineSegment] {
             var segments: [LineSegment] = []
             var current: CGPoint? = nil
@@ -72,14 +72,14 @@ public extension [CGPoint] {
             return newPoints
         }
         
-        func getSegments_v2(_ points: [CGPoint])  -> [LineSegment] {
+        func getSegments_v2(_ points: [CGPoint], with scalar: CGFloat)  -> [LineSegment] {
             var segments: [LineSegment] = []
             
             var previousAngle: Angle? = nil
             var previousPoint: CGPoint? = nil
             var previousRadius: CGFloat? = nil
             
-            let scalar: CGFloat = 5.0
+//            let scalar: CGFloat = 5.0
 
             for point in points {
 //                let adjustedVelocity =  tanh(point.velocity * 0.001) - 0.5
@@ -135,7 +135,7 @@ public extension [CGPoint] {
 //        }
 //        let completePoints = points + potential
 //        let lerps = getLerps(completePoints)
-        let perps = getSegments_v2(self)
+        let perps = getSegments_v2(self, with: size)
         
         let path = CGMutablePath()
         
